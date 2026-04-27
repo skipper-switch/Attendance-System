@@ -61,15 +61,15 @@ export default function SignInPage() {
 
   return (
     <main className="flex h-screen w-full font-sans bg-white antialiased overflow-hidden">
-      {/* Left Panel: Brand & Features */}
+    
       <section className="hidden lg:flex flex-col justify-between w-1/2 bg-[#0F172A] p-12 text-white relative overflow-hidden">
-        {/* Decorative pattern */}
+       
         <div 
           className="absolute inset-0 opacity-20 pointer-events-none" 
           style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)', backgroundSize: '24px 24px' }}
         ></div>
         
-        {/* Top: Brand Identity */}
+
         <div className="relative z-10">
           <span className="text-sm uppercase tracking-[0.2em] font-extrabold text-white/90">ACADEMY</span>
         </div>
@@ -116,7 +116,7 @@ export default function SignInPage() {
       <section className="w-full lg:w-1/2 flex items-center justify-center bg-[#f7f9fb] p-6 text-[#191c1e]">
         <div className="w-full max-w-[440px]">
           {/* Sign In Card */}
-          <div className="bg-white rounded-2xl border border-[#c6c6cd]/30 p-10 md:p-12 shadow-sm">
+          <div className="bg-white rounded-2xl border border-[#c6c6cd]/30 px-10 md:px-12 py-6 shadow-sm">
             {/* Form Header */}
             <div className="flex flex-col items-center mb-10">
               <div className="w-12 h-12 bg-[#6366F1] rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-[#6366F1]/20">
