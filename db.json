@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Mr. Ade Coker",
+      "email": "admin@academy.com",
+      "password": "Admin1234!",
+      "role": "admin",
+      "cohortId": null,
+      "avatarInitials": "AC",
+      "enrolledDate": null
+    },
+    {
+      "id": 2,
+      "name": "Ada Okafor",
+      "email": "ada@academy.com",
+      "password": "Student123!",
+      "role": "student",
+      "cohortId": 1,
+      "avatarInitials": "AO",
+      "enrolledDate": "2026-02-03"
+    },
+    {
+      "name": "hello",
+      "email": "sdhsdhds@gmail.com",
+      "password": "12345566",
+      "role": "student",
+      "cohortId": 1,
+      "avatarInitials": "HE",
+      "enrolledDate": "2026-04-27T11:45:03.479Z",
+      "id": 3
+    }
+  ],
+  "cohorts": [
+    {
+      "id": 1,
+      "name": "Frontend Engineering - Cohort 3",
+      "startDate": "2026-02-03",
+      "endDate": "2026-06-30",
+      "instructor": "Mr. Ade Coker",
+      "description": "Full-stack frontend engineering with React, Next.js and TypeScript"
+    },
+    {
+      "name": "cohort 4",
+      "startDate": "2026-04-28",
+      "endDate": "2026-04-21",
+      "instructor": "sdjjdsjdsj",
+      "description": "sajsajjsajsajsajjsajsajsajjsajsa",
+      "id": 2
+    }
+  ],
+  "attendance": [
+    {
+      "id": 1,
+      "studentId": 2,
+      "cohortId": 1,
+      "date": "2026-04-27",
+      "status": "present",
+      "checkInTime": "2026-04-27T09:04:00",
+      "note": ""
+    },
+    {
+      "id": 2,
+      "studentId": 3,
+      "cohortId": 1,
+      "date": "2026-04-27",
+      "status": "late",
+      "checkInTime": "2026-04-27T09:42:00",
+      "note": "Traffic delay"
+    },
+    {
+      "id": 3,
+      "studentId": 4,
+      "cohortId": 1,
+      "date": "2026-04-27",
+      "status": "absent",
+      "note": ""
+    },
+    {
+      "id": 4,
+      "studentId": 5,
+      "cohortId": 1,
+      "date": "2026-04-27",
+      "status": "excused",
+      "note": "Medical appointment"
+    }
+  ]
+}
