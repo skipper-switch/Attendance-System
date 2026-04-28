@@ -12,18 +12,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SidebarProvider className="border-r-2 border-black">
+    <SidebarProvider className="">
       <main className="flex w-screen h-screen font-inter no-scrollbar">
         <div className="h-full sticky top-0 bg-[#f5f5f5]">
-          {/* <AppSidebar /> */}
+          <AppSidebar />
         </div>
 
         <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="h-16  w-full flex items-center justify-between p-5 sm:p-8 border-b-3 border-black bg-[#f5f5f5] z-50">
+          <div className="h-16  w-full flex items-center justify-between p-5 sm:p-8 border-b-2 border-gray bg-[#f5f5f5] z-50">
 
-            
-            
-         <h1 className="text-2xl font-bold">Attendance Management System</h1>
           </div>
 
           <div className="flex-1 overflow-auto no-scrollbar px-8 py-6 bg-[#f5f5f5] relative">{children}</div>

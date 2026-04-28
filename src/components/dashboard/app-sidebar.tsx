@@ -75,8 +75,8 @@ export function AppSidebar() {
   ]
 
   return (
-    <Sidebar className="w-64 border-r-4 border-black bg-[#f5f5f5]">
-      <div className="border-r-2 border-black flex flex-col h-full">
+    <Sidebar className="w-64 bg-[#f5f5f5]">
+      <div className=" flex flex-col h-full">
         {/* Header with Logo */}
         <SidebarHeader className="p-4 mt-2 flex-shrink-0">
           <div className="flex items-center gap-1">

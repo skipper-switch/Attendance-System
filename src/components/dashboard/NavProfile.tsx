@@ -35,7 +35,7 @@ const NavProfile = ({ data, className }: NotificationsProps) => {
     <div className={className}>
       {notifications.map((item, index) => (
         <div key={index} className="relative">
-          <button className="rounded-full w-10 h-10 border border-black flex items-center justify-center ">
+          <button className="rounded-full w-10 h-10  flex items-center justify-center">
             <Icon icon={item.icon} width={18} height={18} />
           </button>
           {item.count && (
@@ -45,7 +45,7 @@ const NavProfile = ({ data, className }: NotificationsProps) => {
           )}
         </div>
       ))}
-      <div className="w-10 h-10 border border-black rounded-full overflow-hidden">
+      <div className="w-10 h-10  rounded-full overflow-hidden">
         <Image src={Avatar} alt="man_head_down" className="w-10 h-10 rounded-full object-cover border border-black" />
       </div>
     </div>
