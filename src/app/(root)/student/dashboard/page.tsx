@@ -17,7 +17,7 @@ export default function StudentDashboardPage() {
     }
   }, [user, router]);
 
-  const { data: attendance, isLoading, error } = useGetAttendanceQuery();
+  const { data: attendance, isLoading, error } = useGetAttendanceQuery({});
 
   const studentAttendance =
     attendance?.filter(
@@ -111,7 +111,10 @@ export default function StudentDashboardPage() {
             Frontend Engineering · Cohort 3
           </p>
         </div>
-        <button className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/20">
+        <button
+          onClick={() => router.push("/student/check-in")}
+          className="flex items-center cursor-pointer gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/20"
+        >
           <span className="material-symbols-outlined text-lg">
             qr_code_scanner
           </span>
