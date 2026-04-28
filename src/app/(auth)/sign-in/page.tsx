@@ -20,6 +20,7 @@ export default function SignInPage() {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [login, { isLoading }] = useLoginMutation();
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
@@ -30,6 +31,8 @@ export default function SignInPage() {
   });
 
   const onSubmit = async (values: z.infer<typeof SignInSchema>) => {
+    setErrorMessage("");        // ← Clear previous error
+
     try {
       const users = await login(values).unwrap();
 
@@ -42,22 +45,30 @@ export default function SignInPage() {
 
       dispatch(setCredentials({ token, user }));
 
+      const redirectPath = user.role === "admin" ? "/admin/dashboard" : "/student/dashboard";
+      router.push(redirectPath);
+
       ToastNotification({
         title: "Successful",
         description: "Logged in successfully",
         type: "success",
       });
-      const redirectPath = user.role === "admin" ? "/admin/dashboard" : "/student/dashboard";
-      router.push(redirectPath);
+     
     } catch (error: any) {
       console.log("Login error:", error);
+      
+      const message = error?.data?.error || error?.message || "Invalid email or password";
+      setErrorMessage(message);                    // ← Set error message
+
       ToastNotification({
         title: "Error",
-        description: error?.data?.error || error?.message || "Unable to sign in",
+        description: message,
         type: "error",
       });
     }
   };
+
+
 
   return (
     <main className="flex h-screen w-full font-sans bg-white antialiased overflow-hidden">
@@ -126,6 +137,15 @@ export default function SignInPage() {
               <p className="text-sm text-[#45464d] text-center mt-1">Sign in to your academy account</p>
             </div>
 
+            {errorMessage && (
+              <div 
+                data-testid="login-error"
+                className="mb-6 p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm font-medium"
+              >
+                {errorMessage}
+              </div>
+            )}
+
             {/* Form */}
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -134,6 +154,7 @@ export default function SignInPage() {
                   fieldType={FormFieldType.INPUT}
                   control={form.control}
                   name="email"
+                  data-testid="email-input"
                   label={<span className="font-semibold text-[#191c1e] text-sm">Email address</span>}
                   placeholder="name@example.com"
                   variant="!w-full !px-4 !py-3 !bg-[#f2f4f6] !border-transparent !rounded-lg focus-visible:ring-2 focus-visible:ring-[#6366F1] focus-visible:bg-white transition-all outline-none text-[#191c1e] placeholder:text-[#c6c6cd] text-base"
@@ -143,6 +164,7 @@ export default function SignInPage() {
                   fieldType={FormFieldType.INPUT}
                   control={form.control}
                   name="password"
+                  data-testid="password-input"
                   label={<span className="font-semibold text-[#191c1e] text-sm">Password</span>}
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
@@ -157,6 +179,8 @@ export default function SignInPage() {
                 />
 
                 <SubmitButton 
+                   data-testid="login-btn"
+                   
                   isLoading={isLoading} 
                   loadingText="Signing In..." 
                   className="w-full h-12 mt-4 !bg-[#6366F1] text-white font-bold text-base rounded-xl hover:!bg-[#4f46e5] active:scale-[0.99] transition-all shadow-md shadow-[#6366F1]/20 cursor-pointer"

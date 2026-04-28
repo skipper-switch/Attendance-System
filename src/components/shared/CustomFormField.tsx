@@ -66,6 +66,7 @@ interface CustomProps<T extends FieldValues> {
   disabledDates?: (date: Date) => boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   rightIcon?: React.ReactNode;
+  "data-testid"?: string;
 }
 
 const RenderInput = <T extends FieldValues>({
@@ -77,30 +78,31 @@ const RenderInput = <T extends FieldValues>({
 }) => {
   switch (props.fieldType) {
     case FormFieldType.INPUT:
-      return (
-        <div className="flex items-center rounded-md border border-dark-500 bg-dark-400 relative">
-          <FormControl>
-            <Input
-              placeholder={props.placeholder}
-              {...field}
-              type={props.type}
-              readOnly={props.readOnly}
-              disabled={props.disabled}
-              className={`${props.variant} text-16 placeholder:text-16 rounded-[5px] border bg-[#F7FCFF] text-gray-900 placeholder:text-gray-500 pr-10`}
-              onChange={(e) => {
-                field.onChange(e);
-                props.onChange?.(e);
-              }}
-            />
-          </FormControl>
+  return (
+    <div className="relative">
+      <FormControl>
+        <Input
+          placeholder={props.placeholder}
+          {...field}
+          type={props.type}
+          readOnly={props.readOnly}
+          disabled={props.disabled}
+          className={`${props.variant} text-16 placeholder:text-16 rounded-[5px] border bg-[#F7FCFF] text-gray-900 placeholder:text-gray-500 pr-10`}
+          onChange={(e) => {
+            field.onChange(e);
+            props.onChange?.(e);
+          }}
+          data-testid={props["data-testid"]}   // ← This is critical
+        />
+      </FormControl>
 
-          {props.rightIcon && (
-            <div className="absolute right-3 cursor-pointer">
-              {props.rightIcon}
-            </div>
-          )}
+      {props.rightIcon && (
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer">
+          {props.rightIcon}
         </div>
-      );
+      )}
+    </div>
+  );
 
     case FormFieldType.PHONE_INPUT:
       return (

@@ -217,3 +217,8 @@ curl -X POST http://localhost:3001/users \
 ```bash
 curl http://localhost:3001/attendance
 ```
+jest ---> unit
+cypress ---> e2e
+
+
+npx cypress open

@@ -1,28 +1,41 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { SubmitButtonProps } from "@/types";
 import { Loader } from "lucide-react";
+
+interface SubmitButtonProps {
+  type?: "button" | "submit" | "reset";
+  isLoading?: boolean;
+  loadingText?: string;
+  className?: string;
+  children: React.ReactNode;
+  disabled?: boolean;
+  onClick?: () => void;
+  "data-testid"?: string;       
+}
 
 const SubmitButton = ({
   type = "submit",
-  isLoading,
-  loading,
-  loadingText,
+  isLoading = false,
+  loadingText = "Submitting...",
   className,
-  clickFn,
   children,
   disabled,
+  onClick,
+  "data-testid": dataTestId,     
+  ...props                     
 }: SubmitButtonProps) => {
   return (
     <Button
       type={type}
-      disabled={isLoading || loading || disabled}
-      className={className ?? " text-white cursor-pointer"}
-      onClick={clickFn}
+      disabled={isLoading || disabled}
+      className={className ?? "text-white cursor-pointer"}
+      onClick={onClick}
+      data-testid={dataTestId}     
+      {...props}                   
     >
-      {isLoading || loading ? (
-        <div className="flex items-center gap-4">
-          <Loader className="inline-block ml-2 animate-spin" />
+      {isLoading ? (
+        <div className="flex items-center gap-2">
+          <Loader className="h-4 w-4 animate-spin" />
           {loadingText}
         </div>
       ) : (
