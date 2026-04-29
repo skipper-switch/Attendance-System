@@ -10,7 +10,8 @@ interface SubmitButtonProps {
   children: React.ReactNode;
   disabled?: boolean;
   onClick?: () => void;
-  "data-testid"?: string;       
+  "data-testid"?: string;   
+   testId?: string;     
 }
 
 const SubmitButton = ({
@@ -21,7 +22,8 @@ const SubmitButton = ({
   children,
   disabled,
   onClick,
-  "data-testid": dataTestId,     
+  "data-testid": dataTestId, 
+    testId,   
   ...props                     
 }: SubmitButtonProps) => {
   return (
@@ -30,7 +32,7 @@ const SubmitButton = ({
       disabled={isLoading || disabled}
       className={className ?? "text-white cursor-pointer"}
       onClick={onClick}
-      data-testid={dataTestId}     
+      data-testid={testId ?? dataTestId}      
       {...props}                   
     >
       {isLoading ? (

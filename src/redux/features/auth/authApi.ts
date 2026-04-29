@@ -33,14 +33,6 @@ export const authApi = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
-
-    // login: builder.mutation<void, any>({
-    //   query: ({ email, password }) => ({
-    //     url: `/users`,
-    //     method: 'POST',
-    //     body: { email, password },
-    //   }),
-    // }),
   }),
 });
 

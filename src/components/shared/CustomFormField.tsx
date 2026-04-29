@@ -67,6 +67,7 @@ interface CustomProps<T extends FieldValues> {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   rightIcon?: React.ReactNode;
   "data-testid"?: string;
+  testId?: string;
 }
 
 const RenderInput = <T extends FieldValues>({
@@ -92,7 +93,7 @@ const RenderInput = <T extends FieldValues>({
             field.onChange(e);
             props.onChange?.(e);
           }}
-          data-testid={props["data-testid"]}   // ← This is critical
+          data-testid={props.testId ?? props["data-testid"]} 
         />
       </FormControl>
 

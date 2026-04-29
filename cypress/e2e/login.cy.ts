@@ -8,7 +8,8 @@
 
 // cypress/e2e/login.cy.ts
 describe('Login', () => {
-beforeEach(() => cy.visit('/sign-in'));
+beforeEach(() => cy.visit('/'));
+// beforeEach(() => cy.visit('/sign-in'));
 it('redirects student to /student/dashboard', () => {
 cy.get('[data-testid="email-input"]').type('ada@academy.com');
 cy.get('[data-testid="password-input"]').type('Student123!');

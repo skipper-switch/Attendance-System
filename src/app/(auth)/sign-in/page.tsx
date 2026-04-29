@@ -155,6 +155,7 @@ export default function SignInPage() {
                   control={form.control}
                   name="email"
                   data-testid="email-input"
+                  testId="login-email-input"
                   label={<span className="font-semibold text-[#191c1e] text-sm">Email address</span>}
                   placeholder="name@example.com"
                   variant="!w-full !px-4 !py-3 !bg-[#f2f4f6] !border-transparent !rounded-lg focus-visible:ring-2 focus-visible:ring-[#6366F1] focus-visible:bg-white transition-all outline-none text-[#191c1e] placeholder:text-[#c6c6cd] text-base"
@@ -165,6 +166,7 @@ export default function SignInPage() {
                   control={form.control}
                   name="password"
                   data-testid="password-input"
+                  testId="login-password-input"
                   label={<span className="font-semibold text-[#191c1e] text-sm">Password</span>}
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
@@ -180,7 +182,7 @@ export default function SignInPage() {
 
                 <SubmitButton 
                    data-testid="login-btn"
-                   
+                   testId="login-submit-button"
                   isLoading={isLoading} 
                   loadingText="Signing In..." 
                   className="w-full h-12 mt-4 !bg-[#6366F1] text-white font-bold text-base rounded-xl hover:!bg-[#4f46e5] active:scale-[0.99] transition-all shadow-md shadow-[#6366F1]/20 cursor-pointer"
